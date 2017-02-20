@@ -15,6 +15,7 @@
 		59021E341E356A40001ADB35 /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59021E331E356A40001ADB35 /* FoodTrackerTests.swift */; };
 		59021E3F1E356A40001ADB35 /* FoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59021E3E1E356A40001ADB35 /* FoodTrackerUITests.swift */; };
 		5911C61C1E4299140041F545 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5911C61B1E4299140041F545 /* RatingControl.swift */; };
+		599F29D81E5B9C4300D10C1E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599F29D71E5B9C4300D10C1E /* MealTableViewCell.swift */; };
 		59D4209E1E5B950C00E00E85 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4209D1E5B950C00E00E85 /* Meal.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		59021E3E1E356A40001ADB35 /* FoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerUITests.swift; sourceTree = "<group>"; };
 		59021E401E356A40001ADB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5911C61B1E4299140041F545 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		599F29D71E5B9C4300D10C1E /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		59D4209D1E5B950C00E00E85 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				59D4209D1E5B950C00E00E85 /* Meal.swift */,
 				5911C61B1E4299140041F545 /* RatingControl.swift */,
 				59021E221E356A40001ADB35 /* Main.storyboard */,
+				599F29D71E5B9C4300D10C1E /* MealTableViewCell.swift */,
 				59021E251E356A40001ADB35 /* Assets.xcassets */,
 				59021E271E356A40001ADB35 /* LaunchScreen.storyboard */,
 				59021E2A1E356A40001ADB35 /* Info.plist */,
@@ -270,6 +273,7 @@
 				59021E211E356A40001ADB35 /* ViewController.swift in Sources */,
 				5911C61C1E4299140041F545 /* RatingControl.swift in Sources */,
 				59021E1F1E356A40001ADB35 /* AppDelegate.swift in Sources */,
+				599F29D81E5B9C4300D10C1E /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
