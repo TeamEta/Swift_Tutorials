@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var gyroRawX: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     //MARK: UITextFieldDelegate
     
@@ -98,10 +99,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             self.present(imagePicker, animated: true, completion: nil)
         }
         */
-    }
-    
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "Default Text"
     }
     
     
