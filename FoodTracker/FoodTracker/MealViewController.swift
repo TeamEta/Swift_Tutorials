@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import os.log
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -19,6 +20,15 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var gyroRawX: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /*
+     This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
+     or constructed as part of adding a new meal.
+     */
+    var meal: Meal?
+    
+
     
     //MARK: UITextFieldDelegate
     
@@ -55,16 +65,38 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Navigation
+    
+    // This method lets you configure a view controller before it's presented.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = nameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        
+        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        meal = Meal(name: name, photo: photo, rating: rating)
+        
+        manager.stopDeviceMotionUpdates()
+        
+    }
+    
     
     //MARK: Actions
     
-    
-    
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+
         // Hide the keyboard
         
         nameTextField.resignFirstResponder()
-        
+ 
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
@@ -76,7 +108,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // presents view controller defined by imagePickerController, animates presentation of pickerController, and does nothing special after completion
         present(imagePickerController, animated: true, completion: nil)
-        
+ 
+ 
         /*
         // this line checks to see if this device actually has a camera
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -91,9 +124,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             imagePicker.delegate = self
             
             // 
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
-            
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            //imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.allowsEditing = false
+            
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .fullScreen
+            //imagePicker.takePicture()
             
             self.present(imagePicker, animated: true, completion: nil)
         }
@@ -106,7 +143,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Handle the text field's user input through delegate callbacks.
         nameTextField.delegate = self
-        
+        /*
         if manager.isGyroAvailable {
             manager.gyroUpdateInterval = 0.1
             manager.startGyroUpdates()
@@ -114,7 +151,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             gyroRawX.text = String(format:"%f", (manager.gyroData?.rotationRate.x)!)
             
             manager.stopGyroUpdates()
-        }
+        }*/
+        
+        manager.deviceMotionUpdateInterval = 0.1
+        manager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler:
+            {deviceManager, error in
+                self.gyroRawX.text = String(format:"Yaw = %f", (self.manager.deviceMotion?.attitude.yaw)!)
+            }
+        )
         
     }
 
