@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-Zx-HaJ">
-                                <rect key="frame" x="20" y="84" width="374" height="492"/>
+                                <rect key="frame" x="20" y="84" width="374" height="492.33333333333337"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Meal Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-NK-eFI">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -77,6 +77,7 @@
                         <outlet property="gyroRawX" destination="GDD-GV-tUL" id="K7r-TH-g71"/>
                         <outlet property="nameTextField" destination="4ey-NK-eFI" id="eU0-jH-Xg9"/>
                         <outlet property="photoImageView" destination="gKr-Oz-al4" id="GkM-kh-sVz"/>
+                        <outlet property="pictureTap" destination="8rW-KF-Gw0" id="zEp-au-tI6"/>
                         <outlet property="ratingControl" destination="Dpb-Pz-Vi5" id="vLn-8I-wJw"/>
                         <outlet property="saveButton" destination="5y7-Yp-wPz" id="GBm-G7-HXl"/>
                     </connections>

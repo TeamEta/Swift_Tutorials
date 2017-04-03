@@ -8,8 +8,8 @@
 
 import UIKit
 
-class MealTableViewController: UITableViewController {
-
+class MealTableViewController: UITableViewController{
+    
     //MARK: Properties
     
     var meals = [Meal]()
@@ -19,11 +19,8 @@ class MealTableViewController: UITableViewController {
         
         //Load the sample meals
         loadSampleMeals()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        
     }
 
     // MARK: - Table view data source
@@ -100,7 +97,8 @@ class MealTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
     //MARK: Private Methods
     private func loadSampleMeals() {
         

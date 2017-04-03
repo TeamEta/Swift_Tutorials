@@ -9,6 +9,8 @@
 import UIKit
 import CoreMotion
 import os.log
+import AVFoundation
+import Photos
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,6 +23,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var pictureTap: UITapGestureRecognizer!
+    
     
     /*
      This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
@@ -91,6 +95,28 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     //MARK: Actions
     
+    private let photoOutput = AVCapturePhotoOutput()
+    
+    //let tap = UITapGestureRecognizer(target: self, action: #selector(capturePhoto(_:)))
+    
+    func capturePhoto(sender: UITapGestureRecognizer) {
+        
+        let photoSettings = AVCapturePhotoSettings()
+        photoSettings.flashMode = .auto
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.livePhotoMovieFileURL = nil
+        if photoSettings.availablePreviewPhotoPixelFormatTypes.count > 0 {
+            photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String : photoSettings.availablePreviewPhotoPixelFormatTypes.first!]
+        }
+    
+        let photoCaptureDelegate = PhotoCaptureDelegate(with: photoSettings,
+                                                        format: photoSettings.previewPhotoFormat)
+        
+        self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
+    }
+    
+    
+    /*
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
 
         // Hide the keyboard
@@ -135,9 +161,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             self.present(imagePicker, animated: true, completion: nil)
         }
         */
-    }
-    
-    
+    }*/
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -161,6 +186,5 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         )
         
     }
-
 }
 
