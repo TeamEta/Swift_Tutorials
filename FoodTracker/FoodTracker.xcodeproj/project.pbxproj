@@ -17,6 +17,9 @@
 		5911C61C1E4299140041F545 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5911C61B1E4299140041F545 /* RatingControl.swift */; };
 		596FF2431E7F563B00A502DE /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596FF2421E7F563B00A502DE /* PhotoCaptureDelegate.swift */; };
 		596FF2451E8072A500A502DE /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596FF2441E8072A500A502DE /* PreviewView.swift */; };
+		5977B9441E95A0EF00E1A65E /* PictureBandit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5977B9431E95A0EF00E1A65E /* PictureBandit.xib */; };
+		5977B9471E95A1A100E1A65E /* PictureBanditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5977B9451E95A1A100E1A65E /* PictureBanditViewController.swift */; };
+		5977B9481E95A1A100E1A65E /* PictureBanditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5977B9461E95A1A100E1A65E /* PictureBanditViewController.xib */; };
 		597B01E41E64D59C00BC3CA6 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597B01E31E64D59C00BC3CA6 /* MealTableViewController.swift */; };
 		599F29D81E5B9C4300D10C1E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599F29D71E5B9C4300D10C1E /* MealTableViewCell.swift */; };
 		59D4209E1E5B950C00E00E85 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4209D1E5B950C00E00E85 /* Meal.swift */; };
@@ -56,6 +59,9 @@
 		5911C61B1E4299140041F545 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		596FF2421E7F563B00A502DE /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		596FF2441E8072A500A502DE /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		5977B9431E95A0EF00E1A65E /* PictureBandit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureBandit.xib; path = ../PictureBandit.xib; sourceTree = "<group>"; };
+		5977B9451E95A1A100E1A65E /* PictureBanditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureBanditViewController.swift; path = ../PictureBanditViewController.swift; sourceTree = "<group>"; };
+		5977B9461E95A1A100E1A65E /* PictureBanditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureBanditViewController.xib; path = ../PictureBanditViewController.xib; sourceTree = "<group>"; };
 		597B01E31E64D59C00BC3CA6 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		599F29D71E5B9C4300D10C1E /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		59D4209D1E5B950C00E00E85 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -110,6 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				59021E1E1E356A40001ADB35 /* AppDelegate.swift */,
+				5977B9451E95A1A100E1A65E /* PictureBanditViewController.swift */,
+				5977B9461E95A1A100E1A65E /* PictureBanditViewController.xib */,
+				5977B9431E95A0EF00E1A65E /* PictureBandit.xib */,
 				59021E201E356A40001ADB35 /* MealViewController.swift */,
 				596FF2441E8072A500A502DE /* PreviewView.swift */,
 				59D4209D1E5B950C00E00E85 /* Meal.swift */,
@@ -251,9 +260,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5977B9441E95A0EF00E1A65E /* PictureBandit.xib in Resources */,
 				59021E291E356A40001ADB35 /* LaunchScreen.storyboard in Resources */,
 				59021E261E356A40001ADB35 /* Assets.xcassets in Resources */,
 				59021E241E356A40001ADB35 /* Main.storyboard in Resources */,
+				5977B9481E95A1A100E1A65E /* PictureBanditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5977B9471E95A1A100E1A65E /* PictureBanditViewController.swift in Sources */,
 				59D4209E1E5B950C00E00E85 /* Meal.swift in Sources */,
 				596FF2451E8072A500A502DE /* PreviewView.swift in Sources */,
 				59021E211E356A40001ADB35 /* MealViewController.swift in Sources */,

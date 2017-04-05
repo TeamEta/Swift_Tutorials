@@ -42,14 +42,14 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishCaptureForResolvedSettings resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
     
         PHPhotoLibrary.requestAuthorization{ [unowned self] status in
-            PHPhotoLibrary.shared().performChanges({ [unowned self] in
-                let creationRequest = PHAssetCreationRequest.forAsset()
-                creationRequest.addResource(with: .photo, data: (self.photoData)!, options: nil)
-                }, completionHandler: { [unowned self] success, error in
-                    if let error = error {
-                        print("Error occurred while saving photo to photo library: \(error)")
-                    }
-                })
-            }
+                                            PHPhotoLibrary.shared().performChanges({ [unowned self] in
+                                            let creationRequest = PHAssetCreationRequest.forAsset()
+                                                creationRequest.addResource(with: .photo, data: (self.photoData)!, options: nil)
+                                            }, completionHandler: { [unowned self] success, error in
+                                                if let error = error {
+                                                    print("Error occurred while saving photo to photo library: \(error)")
+                                                }
+                                            })
+                                        }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreMotion
 import os.log
-import AVFoundation
+//import AVFoundation
 import Photos
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -47,6 +47,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     //MARK: UIImagePickerControllerDelegate
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         //Dismiss this picker if the user cancels
@@ -99,8 +100,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     //let tap = UITapGestureRecognizer(target: self, action: #selector(capturePhoto(_:)))
     
-    func capturePhoto(sender: UITapGestureRecognizer) {
-        
+    @IBAction func capturePhoto(_ sender: UITapGestureRecognizer) {
+        /*
         let photoSettings = AVCapturePhotoSettings()
         photoSettings.flashMode = .auto
         photoSettings.isHighResolutionPhotoEnabled = true
@@ -108,16 +109,37 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         if photoSettings.availablePreviewPhotoPixelFormatTypes.count > 0 {
             photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String : photoSettings.availablePreviewPhotoPixelFormatTypes.first!]
         }
-    
-        let photoCaptureDelegate = PhotoCaptureDelegate(with: photoSettings,
-                                                        format: photoSettings.previewPhotoFormat)
         
-        self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
+        let photoCaptureDelegate = PhotoCaptureDelegate(with:photoSettings, format: photoSettings.previewPhotoFormat)
+        
+        self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)*/
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            
+            // Hide the keyboard
+            nameTextField.resignFirstResponder()
+            
+            // UIImagePickerController is a view controller that allows a user to pick media from their photo library, take a picture or movie, and more. This line declares one.
+            let imagePicker = UIImagePickerController()
+            
+            // sets delegate of imagePicker
+            imagePicker.delegate = self
+            
+            //
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            //imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .fullScreen
+            
+            self.present(imagePicker, animated: true, completion: nil)
+            imagePicker.takePicture()
+        }
     }
     
     
-    /*
-    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+    
+/*    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
 
         // Hide the keyboard
         
@@ -136,7 +158,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         present(imagePickerController, animated: true, completion: nil)
  
  
-        /*
+ 
         // this line checks to see if this device actually has a camera
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
@@ -160,7 +182,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             
             self.present(imagePicker, animated: true, completion: nil)
         }
-        */
+ 
     }*/
 
     override func viewDidLoad() {
@@ -181,6 +203,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         manager.deviceMotionUpdateInterval = 0.1
         manager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler:
             {deviceManager, error in
+                
                 self.gyroRawX.text = String(format:"Yaw = %f", (self.manager.deviceMotion?.attitude.yaw)!)
             }
         )
